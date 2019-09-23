@@ -22,7 +22,7 @@ int main(){
         }
 
         if(temp.size() == 1){
-            cout << temp[0].first << temp[0].second << endl;
+            cout << temp[0].first << " " << temp[0].second << endl;
         }else{
             cout << -1 << endl;
         }
