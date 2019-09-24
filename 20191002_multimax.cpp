@@ -44,4 +44,6 @@ int main(){
         temp.clear();
         number.clear();
     }
+
+    in.close();
 }
