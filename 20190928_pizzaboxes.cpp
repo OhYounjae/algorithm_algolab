@@ -16,6 +16,12 @@ int main(){
         int sum = 0; // 상자의 총 합
         int max_sum = 0; //최대값의 합
 
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                arr2[i][j] = 0;
+            }
+        }
+
         //배열에 숫자들 넣어주기(가로줄 최댓값 구하면서 배열에 저장)
         for(int i = 0; i < x; i++){
             int maxi = 0;
@@ -30,10 +36,14 @@ int main(){
                     a = i;
                     b = j;
                 }
+                
             }
             arr2[a][b] = maxi;
+            //cout << arr2[a][b] << endl;
             
         }
+        //cout << endl;
+
 
         //각 배열별 최댓값 구하기(세로줄)
         for(int j = 0; j < y; j++){
@@ -48,18 +58,25 @@ int main(){
                 }
             }
             //cout << maxi << ' ';
-            //arr2[a][b] = maxi;
+            arr2[a][b] = maxi;
         }
         //cout << endl;
 
 
-        //각 배열의 최대값 합 구하기
         for(int i = 0; i < x; i++){
             for(int j = 0; j < y; j++){
                 cout << arr2[i][j] << ' ';
-                max_sum += arr2[i][j];
             }
             cout << endl;
+        }
+
+        //각 배열의 최대값 합 구하기
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                
+                max_sum += arr2[i][j];
+            }
+            
         }
 
         cout << endl;
