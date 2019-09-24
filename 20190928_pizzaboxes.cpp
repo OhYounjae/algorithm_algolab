@@ -15,54 +15,56 @@ int main(){
         int arr2[x][y]; //각 배열별 최댓값만 저장할 새로운 배열
         int sum = 0; // 상자의 총 합
         int max_sum = 0; //최대값의 합
-        int total; //총 버려야 하는 상자의 값
 
-        //배열에 숫자들 넣어주기
-        for(int i = x - 1; i >= 0; i--){
+        //배열에 숫자들 넣어주기(가로줄 최댓값 구하면서 배열에 저장)
+        for(int i = 0; i < x; i++){
+            int maxi = 0;
+            int a ,b;
             for(int j = 0; j < y; j++){
                 int temp;
                 in >> temp;
                 arr1[i][j] = temp;
                 sum += temp;
-            }
-        }
-
-        //각 배열별 최댓값 구하기(가로줄)
-        for(int i = x - 1; i >= 0; i--){
-            int temp = 0;
-            int a, b;
-            for(int j = 0; j < y; j++){
-                if(arr1[i][j] >= temp){
-                    temp = arr1[i][j];
+                if(temp >= maxi){
+                    maxi = temp;
                     a = i;
                     b = j;
                 }
             }
-            arr2[a][b] = temp;
+            arr2[a][b] = maxi;
+            
         }
 
         //각 배열별 최댓값 구하기(세로줄)
         for(int j = 0; j < y; j++){
-            int temp = 0;
+            int maxi = 0;
             int a;
             int b;
-            for(int i = x - 1; x >= 0; x++){
-                if(arr1[i][j] >= temp){
-                    temp = arr1[i][j];
+            for(int i = 0; i < x; i++){
+                if(arr1[i][j] >= maxi){
+                    maxi = arr1[i][j];
                     a = i;
                     b = j;
                 }
             }
-            arr2[a][b] = temp;
+            //cout << maxi << ' ';
+            //arr2[a][b] = maxi;
         }
+        //cout << endl;
 
+
+        //각 배열의 최대값 합 구하기
         for(int i = 0; i < x; i++){
             for(int j = 0; j < y; j++){
+                cout << arr2[i][j] << ' ';
                 max_sum += arr2[i][j];
             }
+            cout << endl;
         }
-        
-        total = sum - max_sum;
+
+        cout << endl;
+        cout << sum << ' '<< max_sum << endl;
+        int total = sum - max_sum;
         cout << total << endl;
 
     }
