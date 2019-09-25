@@ -13,8 +13,8 @@ int main(){
         in >> x >> y;
         int arr1[x][y]; //2차원 배열 생성
         int arr2[x][y]; //각 배열별 최댓값만 저장할 새로운 배열
-        long sum = 0; // 상자의 총 합
-        long max_sum = 0; //최대값의 합
+        long long sum = 0; // 상자의 총 합
+        long long max_sum = 0; //최대값의 합
 
         //arr2 초기화
         for(int i = 0; i < x; i++){
@@ -25,10 +25,10 @@ int main(){
 
         //배열에 숫자들 넣어주기(가로줄 최댓값 구하면서 배열에 저장)
         for(int i = 0; i < x; i++){
-            long maxi = 0;
+            long long maxi = 0;
             int a ,b;
-            for(long j = 0; j < y; j++){
-                long temp;
+            for(int j = 0; j < y; j++){
+                long long temp;
                 in >> temp;
                 arr1[i][j] = temp;
                 sum += temp;
@@ -45,7 +45,7 @@ int main(){
 
         //각 배열별 최댓값 구하기(세로줄)
         for(int j = 0; j < y; j++){
-            long maxi = 0;
+            long long maxi = 0;
             int a;
             int b;
             for(int i = 0; i < x; i++){
@@ -67,7 +67,7 @@ int main(){
             
         }
 
-        long total = sum - max_sum;
+        long long total = sum - max_sum;
         cout << total << endl;
 
     }
