@@ -16,28 +16,40 @@ int main(){
         int num;
         in >> num;
         int temp = num;
+        bool check = false;
         
         for(int i = 2; i <= 64; i++){
             string str = "";
-            bool check = false;
-            while(temp >= i){
-                str += to_string(temp % i);
+            
+            while(temp > 0){
+                int t = temp % i;
+                if (t < 10){ // 숫자처리
+                    char a = t + 48;
+                    str = a + str;
+                }else{ // 문자처리
+                    char a = 65 - 10 + t;
+                    str = a + str;
+                } 
                 temp /= i;
             }
-            string rever = str;
-            reverse(rever.begin(), rever.end());
-            for(int i = 0; i < str.length; i++){
-                if(str[i] == rever[i]){
-                    cout << 1 << endl;
-                    check = true;
-                    break;
-                }
+            // cout << str << endl;
+            string rever = "";
+            //cout << str << ' ';
+            for(int j = str.length() - 1;j >= 0;j--){
+                rever += str[j];
+            }
+            // reverse(rever.begin(), rever.end());
+            if(str == rever){
+                check = true;
+                
             }
 
             if(check) break;
-            
+            temp = num;
         }
-        cout << 0 << endl;        
+        if(check){
+            cout << 1 << endl;
+        }else cout << 0 << endl;
     }
 
     in.close();
